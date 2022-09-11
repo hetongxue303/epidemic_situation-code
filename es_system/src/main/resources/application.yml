@@ -1,0 +1,10 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: template
+  config:
+    import:
+      - application-web.yml
+      - application-log.yml
+      - application-redis.yml

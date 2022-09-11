@@ -47,6 +47,7 @@
     <!--module management-->
     <modules>
         <module>es_common</module>
+        <module>es_system</module>
     </modules>
 
     <!--dependency management-->
