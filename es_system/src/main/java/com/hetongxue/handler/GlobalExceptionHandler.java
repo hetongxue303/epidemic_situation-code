@@ -11,12 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @Description: global exception handler
- *
+ * @Description: 全局异常处理程序
  * @Class: GlobalExceptionHandler
- *
  * @Author: hetongxue
- *
  * @DateTime: 2022/9/12 0:01:05
  */
 @Slf4j

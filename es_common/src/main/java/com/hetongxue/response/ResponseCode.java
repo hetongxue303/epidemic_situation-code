@@ -4,12 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @Description: custom status code
- *
+ * @Description: 自定义状态码
  * @Enum: ResponseCode
- *
  * @Author: hetongxue
- *
  * @DateTime: 2022/9/9 4:25:53
  */
 @Getter

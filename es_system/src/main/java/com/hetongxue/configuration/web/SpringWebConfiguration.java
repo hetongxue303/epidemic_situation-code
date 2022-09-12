@@ -19,12 +19,9 @@ import java.util.List;
 import java.util.TimeZone;
 
 /**
- * @Description: spring web configuration class
- *
+ * @Description: spring web 配置类
  * @Class: SpringWebConfiguration
- *
  * @Author: hetongxue
- *
  * @DateTime: 2022/9/11 23:54:26
  */
 @Configuration

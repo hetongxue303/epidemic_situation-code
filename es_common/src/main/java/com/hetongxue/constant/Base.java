@@ -1,12 +1,9 @@
 package com.hetongxue.constant;
 
 /**
- * @Description: base const
- *
+ * @Description: 基本常量
  * @Class: Base
- *
  * @Author: hetongxue
- *
  * @DateTime: 2022/9/9 4:37:37
  */
 public class Base {

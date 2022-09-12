@@ -1,0 +1,11 @@
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+#    type-aliases-package: com.hetongxue.system.domain
+  global-config:
+    db-config:
+      logic-delete-field: delete
+      logic-delete-value: 1
+      logic-not-delete-value: 1

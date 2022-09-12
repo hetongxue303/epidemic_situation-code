@@ -10,10 +10,10 @@
     <version>1.0-SNAPSHOT</version>
     <description>Resident Epidemic Prevention and Control Management System</description>
 
-    <!--packaging method-->
+    <!--打包方式-->
     <packaging>pom</packaging>
 
-    <!--version control-->
+    <!--版本控制-->
     <properties>
         <!--jdk-->
         <maven.compiler.source>11</maven.compiler.source>
@@ -44,13 +44,13 @@
         <hutool-all.version>5.8.5</hutool-all.version>
     </properties>
 
-    <!--module management-->
+    <!--模块管理-->
     <modules>
         <module>es_common</module>
         <module>es_system</module>
     </modules>
 
-    <!--dependency management-->
+    <!--依赖管理-->
     <dependencyManagement>
         <dependencies>
             <!--springboot-->
@@ -189,7 +189,7 @@
         </dependencies>
     </dependencyManagement>
 
-    <!--public dependency-->
+    <!--公共依赖-->
     <dependencies>
         <!--web-->
         <dependency>

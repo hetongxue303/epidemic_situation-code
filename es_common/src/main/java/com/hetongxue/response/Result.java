@@ -6,12 +6,9 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 
 /**
- * @Description: unified return class
- *
+ * @Description: 统一返回结果类
  * @Class: Result
- *
  * @Author: hetongxue
- *
  * @DateTime: 2022/9/9 4:32:41
  */
 @Data
