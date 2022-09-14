@@ -1,6 +1,7 @@
 package com.hetongxue.configuration.security.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hetongxue.configuration.security.exception.CaptchaAuthenticationException;
 import com.hetongxue.response.Result;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.AuthenticationException;
@@ -44,12 +45,8 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
         if (exception instanceof InternalAuthenticationServiceException) {
             result.setMessage("账户不存在");
         }
-        // 认证服务异常
-        if (exception instanceof AuthenticationServiceException) {
-            result.setMessage(exception.getMessage());
-        }
-        // 用户不存在
-        if (exception instanceof UsernameNotFoundException) {
+        // 认证服务异常 用户没有找到异常 验证码异常
+        if (exception instanceof AuthenticationServiceException || exception instanceof UsernameNotFoundException || exception instanceof CaptchaAuthenticationException) {
             result.setMessage(exception.getMessage());
         }
         response.getWriter().println(new ObjectMapper().writeValueAsString(result));

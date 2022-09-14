@@ -50,7 +50,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         // 将token设置在请求头上
         response.setHeader(Base.AUTHORIZATION_KEY, token);
         // 自定义返回内容
-        response.getWriter().println(new ObjectMapper().writeValueAsString(Result.Success(user).setMessage("登陆成功")));
+        response.getWriter().println(new ObjectMapper().writeValueAsString(Result.Success(loginUser).setMessage("登陆成功")));
     }
 
 }

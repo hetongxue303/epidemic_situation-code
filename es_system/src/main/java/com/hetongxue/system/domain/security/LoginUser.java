@@ -8,11 +8,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @Description: 用户详情类
@@ -27,13 +25,13 @@ import java.util.List;
 public class LoginUser implements UserDetails {
 
     private User user;
-    private String authorities;
-    private List<MenuVo> menus;
-    private List<RouterVo> routers;
+    private Collection<GrantedAuthority> authorities;
+    private Collection<MenuVo> menus;
+    private Collection<RouterVo> routers;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);
+        return this.authorities;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.hetongxue.configuration.security;
 
+import com.hetongxue.configuration.security.filter.CaptchaFilter;
 import com.hetongxue.configuration.security.filter.JwtAuthenticationFilter;
 import com.hetongxue.configuration.security.handler.*;
 import com.hetongxue.system.service.impl.UserDetailsServiceImpl;
@@ -44,6 +45,8 @@ public class SpringSecurityConfiguration {
 
     @Resource
     private JwtAuthenticationFilter jwtAuthenticationFilter;
+    @Resource
+    private CaptchaFilter captchaFilter;
     @Resource
     private LoginSuccessHandler loginSuccessHandler;
     @Resource
@@ -106,8 +109,10 @@ public class SpringSecurityConfiguration {
                 // 设置创建会话策略
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-        // 在 UsernamePasswordAuthenticationFilter 之前添加 jwtAuthenticationFilter
-        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        // 在 JwtAuthenticationFilter 之前添加 captchaFilter
+        http.addFilterBefore(captchaFilter, JwtAuthenticationFilter.class)
+                // 在 UsernamePasswordAuthenticationFilter 之前添加 jwtAuthenticationFilter
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.httpBasic(Customizer.withDefaults()).build();
     }

@@ -10,6 +10,8 @@ import com.hetongxue.system.domain.vo.RouterVo;
 import com.hetongxue.system.service.PermissionService;
 import com.hetongxue.system.service.RoleService;
 import com.hetongxue.system.service.UserService;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -45,7 +47,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // 2.获取权限信息
         List<Permission> permissions = permissionService.selectPermissionByUserId(user.getId());
         List<Role> roles = roleService.selectRoleByUserId(user.getId());
-        String authorities = SecurityUtils.generateAuthority(roles, permissions);
+        List<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(SecurityUtils.generateAuthority(roles, permissions));
         // 3.获取菜单信息
         List<MenuVo> menus = SecurityUtils.generateMenu(permissions, 0L);
         // 4.获取路由信息
