@@ -110,9 +110,9 @@ public class SpringSecurityConfiguration {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         // 在 JwtAuthenticationFilter 之前添加 captchaFilter
-        http.addFilterBefore(captchaFilter, JwtAuthenticationFilter.class)
-                // 在 UsernamePasswordAuthenticationFilter 之前添加 jwtAuthenticationFilter
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(captchaFilter, UsernamePasswordAuthenticationFilter.class);
+        // 在 UsernamePasswordAuthenticationFilter 之前添加 jwtAuthenticationFilter
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.httpBasic(Customizer.withDefaults()).build();
     }

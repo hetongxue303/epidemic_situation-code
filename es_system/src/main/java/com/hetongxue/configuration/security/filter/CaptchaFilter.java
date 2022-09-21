@@ -27,7 +27,7 @@ public class CaptchaFilter extends OncePerRequestFilter {
 
     private final static String LOGIN_METHOD = "POST";
     private final static String LOGIN_PATH = "/auth/login";
-    private final static String CAPTCHA_PATH = "/auth/getCode";
+    private final static String CAPTCHA_KEY = "code";
 
     @Resource
     private LoginFailureHandler loginFailureHandler;
@@ -38,13 +38,13 @@ public class CaptchaFilter extends OncePerRequestFilter {
     protected void doFilterInternal(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull FilterChain filterChain) throws ServletException, IOException {
         try {
             // 判断是否为登录URL
-            if (!request.getRequestURI().equals(LOGIN_PATH)) {
+            if (!Objects.equals(request.getRequestURI(), LOGIN_PATH)) {
                 filterChain.doFilter(request, response);
                 return;
             }
             // 判断是否为登录URL和POST请求
-            if (request.getRequestURI().equals(LOGIN_PATH) && request.getMethod().equalsIgnoreCase(LOGIN_METHOD)) {
-                String code = request.getParameter(Base.CAPTCHA_KEY);
+            if (Objects.equals(request.getRequestURI(), LOGIN_PATH) && LOGIN_METHOD.equalsIgnoreCase(request.getMethod())) {
+                String code = request.getParameter(CAPTCHA_KEY);
                 String redisCode = (String) redisUtils.getValue(Base.CAPTCHA_KEY);
                 // 验证码不一致：抛出异常
                 if (!Objects.equals(code, redisCode)) {

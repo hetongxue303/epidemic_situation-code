@@ -12,14 +12,14 @@ import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Description: 安全模块
- * @Class: AuthController
+ * @Description: 登录模块
+ * @Class: LoginController
  * @Author: hetongxue
  * @DateTime: 2022/9/12 1:30:23
  */
 @RestController
 @RequestMapping("/auth")
-public class AuthController {
+public class LoginController {
 
     private static final long TIME = 60;
     private static final TimeUnit TIMEUNIT = TimeUnit.SECONDS;
@@ -27,11 +27,10 @@ public class AuthController {
     private static final int HEIGHT = 36;
     private static final int LENGTH = 2;
 
-
     @Resource
     private RedisUtils redisUtils;
 
-    @GetMapping("/getVerify")
+    @GetMapping("/getCode")
     public Result getVerify() {
         // 在java11中使用Nashorn engine  会出现 Warning: Nashorn engine is planned to be removed from a future JDK release
         System.setProperty("nashorn.args", "--no-deprecation-warning");
